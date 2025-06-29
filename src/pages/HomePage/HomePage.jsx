@@ -1,10 +1,12 @@
 import HeroSection from "./components/HeroSection";
 import CategoriesSection from "./components/CategoriesSection";
+import FavoritesSection from "../../components/FavoritesSection";
 export default function HomePage() {
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className=" min-h-screen">
       <HeroSection />
       <CategoriesSection />
+      <FavoritesSection/>
     </div>
   );
 }

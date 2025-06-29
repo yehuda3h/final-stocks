@@ -1,47 +1,50 @@
 [
   {
     "id": 1,
-    "product_name": "Blue Button-Down Shirts",
-    "category": "Clothing",
-    "price": 89.9,
-    "stock": 25,
-    "image_url": "https://example.com/images/shirt2.jpg",
-    "description": "Classic blue button-down shirts, perfect for casual and formal wear."
+    "product_name": "House Slippers",
+    "category": "Footwear",
+    "price": 39.9,
+    "stock": 100,
+    "image_url": "/images/House Slippers.webp",
+    "description": "Comfortable slippers designed for indoor use."
   },
+
   {
     "id": 2,
     "product_name": "Basic T-Shirts",
     "category": "Clothing",
     "price": 49.9,
     "stock": 60,
-    "image_url": "https://example.com/images/shirt3.jpg",
+    "image_url": "/images/T-shert.jpg",
     "description": "Comfortable and versatile basic t-shirts for everyday use."
   },
   {
     "id": 3,
-    "product_name": "Men's Jeans",
-    "category": "Clothing",
-    "price": 149.9,
-    "stock": 35,
-    "image_url": "https://example.com/images/jeans1.jpg",
-    "description": "Durable and stylish men's jeans suitable for various occasions."
+    "product_name": "Double Bedding Set",
+    "category": "Home",
+    "price": 199.9,
+    "stock": 14,
+    "image_url": "/images/Bedding.webp",
+    "description": "Complete double bedding set including sheets and pillowcases."
   },
+ 
   {
     "id": 4,
-    "product_name": "Summer Dresses",
-    "category": "Clothing",
-    "price": 129.9,
-    "stock": 40,
-    "image_url": "https://example.com/images/dress1.jpg",
-    "description": "Light and airy summer dresses, ideal for warm weather."
+    "product_name": "10-inch Tablet",
+    "category": "Electronics",
+    "price": 1299.0,
+    "stock": 10,
+    "image_url": "/images/tablet.jpg",
+    "description": "Portable 10-inch tablet for work, study, and entertainment."
   },
+ 
   {
     "id": 5,
     "product_name": "Polo Shirt",
     "category": "Clothing",
     "price": 79.9,
     "stock": 37,
-    "image_url": "https://example.com/images/polo1.jpg",
+    "image_url": "/images/polo-shirt.jpg",
     "description": "Classic polo shirt with a comfortable fit for casual outings."
   },
   {
@@ -50,7 +53,7 @@
     "category": "Footwear",
     "price": 299.9,
     "stock": 20,
-    "image_url": "https://example.com/images/shoes2.jpg",
+    "image_url": "/images/clothing.jpg",
     "description": "Lightweight and supportive running shoes designed for women."
   },
   {
@@ -62,14 +65,15 @@
     "image_url": "https://example.com/images/shoes3.jpg",
     "description": "Elegant men's leather shoes suitable for formal occasions."
   },
+ 
   {
     "id": 8,
-    "product_name": "House Slippers",
-    "category": "Footwear",
-    "price": 39.9,
-    "stock": 100,
-    "image_url": "https://example.com/images/slippers1.jpg",
-    "description": "Comfortable slippers designed for indoor use."
+    "product_name": "Blue Button-Down Shirts",
+    "category": "Clothing",
+    "price": 89.9,
+    "stock": 25,
+    "image_url": "/images/blue-shirt.jpg",
+    "description": "Classic blue button-down shirts, perfect for casual and formal wear."
   },
   {
     "id": 9,
@@ -118,13 +122,14 @@
   },
   {
     "id": 14,
-    "product_name": "10-inch Tablet",
-    "category": "Electronics",
-    "price": 1299.0,
-    "stock": 10,
-    "image_url": "https://example.com/images/tablet1.jpg",
-    "description": "Portable 10-inch tablet for work, study, and entertainment."
+    "product_name": "Summer Dresses",
+    "category": "Clothing",
+    "price": 129.9,
+    "stock": 40,
+    "image_url": "/images/dress.jpg",
+    "description": "Light and airy summer dresses, ideal for warm weather."
   },
+ 
   {
     "id": 15,
     "product_name": "Laptop Backpack",
@@ -244,13 +249,14 @@
   },
   {
     "id": 28,
-    "product_name": "Double Bedding Set",
-    "category": "Home",
-    "price": 199.9,
-    "stock": 14,
-    "image_url": "https://example.com/images/bedding1.jpg",
-    "description": "Complete double bedding set including sheets and pillowcases."
+    "product_name": "Men's Jeans",
+    "category": "Clothing",
+    "price": 149.9,
+    "stock": 35,
+    "image_url": "/images/jeans.jpg",
+    "description": "Durable and stylish men's jeans suitable for various occasions."
   },
+  
   {
     "id": 29,
     "product_name": "Glass Cups (Set of 6)",

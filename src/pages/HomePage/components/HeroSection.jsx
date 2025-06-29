@@ -1,5 +1,5 @@
-import imgSrc from "../../../assets/pexels-iriser-1002222.jpg";
 import ImgCarousel from "../../../components/imgCarousel";
+
 export default function () {
   return (
     <div className="">

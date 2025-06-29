@@ -1,4 +1,5 @@
 import imgSrc from "../../../assets/pexels-iriser-1002222.jpg";
+
 export default function () {
   return (
     <div className="">
@@ -14,5 +15,6 @@ export default function () {
         </button>
       </div>
     </div>
+    
   );
 }

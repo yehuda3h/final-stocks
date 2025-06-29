@@ -6,11 +6,11 @@ export default function ImgCarousel() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
-    <div className="carousel-container">
+    <div className="">
       <img
         src={images[currentImageIndex]}
         alt="Stock Image"
-        className="carousel-image"
+        className="w-full h-[75vh] object-cover"
       />
     </div>
   );

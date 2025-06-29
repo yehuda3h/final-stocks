@@ -11,14 +11,14 @@ export const links = [
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-gray-900">
       <Navbar />
       <Routes>
-        {links.map(({path,element}) => (
-          <Route path={ path} element={ element}/>
+        {links.map(({ path, element }) => (
+          <Route path={path} element={element} />
         ))}
       </Routes>
-    </>
+    </div>
   );
 }
 

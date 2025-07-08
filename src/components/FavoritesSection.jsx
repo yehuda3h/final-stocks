@@ -1,15 +1,21 @@
-import React from "react";
-import stocks from "../data/stocks.json";
-
+import React, { useEffect, useState } from "react";
 export default function FavoritesSection() {
+  const [favorite,setFavorite] = useState([]);
+  useEffect (() => {
+    fetch("http://localhost:3000/stocks")
+    .then((res) => res.json())
+    .then((obj) => setFavorite(obj.data) )
+  },[]);
+  console.log(favorite);
+  
   return (
     <div>
       <h2 className="text-3xl font-bold text-center text-blue-200  ">
-        Favorites
+        
       </h2>
 
       <div className="flex gap-4 p-6 overflow-x-auto justify-center">
-        {stocks.slice(0, 4).map((item) => (
+        {favorite.slice(0, 4).map((item) => (
           <div
             key={item.id}
             className="bg-white rounded-lg shadow-md p-4 shadow-blue-300/100 transition-transform duration-200 hover:scale-105  w-72"

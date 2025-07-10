@@ -13,7 +13,7 @@ export default function CardSection() {
         {stock.map((stock) => (
           <div
             key={stock.id}
-            className="bg-white rounded-xl  shadow-md flex flex-col items-center p-4 border border-gray-200 w-60 max-w-xs mx-auto"
+            className="bg-white rounded-xl shadow-md flex flex-col items-center p-4 border border-gray-200"
           >
             <img
               src={stock.image_url}

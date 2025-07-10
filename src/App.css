@@ -1,1 +1,51 @@
- @import "tailwindcss";
+@import "tailwindcss";
+
+.bg-home-background {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+
+  position: relative;
+  z-index: 0;
+
+  background-image: url('/images/pexels-kelly-1179532-12530465.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45); /* אפשר לשנות את השקיפות */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-home-background > * {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-home-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  background-repeat: inherit;
+  filter: blur(6px); /* אפשר להגדיל/להקטין את הערך לטשטוש שונה */
+  z-index: 0;
+}
+
+.background-overlay {
+  z-index: 1;
+}

@@ -11,7 +11,9 @@ export const links = [
 
 function App() {
   return (
-    <div className="min-h-screen ">
+  
+    <div className="min-h-screen bg-home-background">
+    
       <Navbar />
       <Routes>
         {links.map(({ path, element }) => (

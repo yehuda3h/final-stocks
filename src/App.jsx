@@ -18,7 +18,7 @@ export const links = [
 function App() {
   const [user, setUser] = useState(null);
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-home-background">
       <AuthContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>

@@ -6,9 +6,10 @@ export default function CategoriesSection() {
   useEffect(() => {
     fetch(" http://127.0.0.1:3000/categories")
       .then((res) => res.json())
-      .then((catgories) => setCategories(catgories));
+      .then(({data}) => {
+         setCategories(data)
+      });
   }, []);
- 
 
   return (
     <div className="py-5">
@@ -17,7 +18,7 @@ export default function CategoriesSection() {
       </h2>
       <div className="flex flex-wrap gap-6 p-6 justify-center">
         {categories.map((item) => (
-          <CatItem category={item} key={item.id} />
+          <CatItem category={item} key={item._id} />
         ))}
       </div>
     </div>

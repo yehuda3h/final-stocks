@@ -15,14 +15,16 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    
     try {
       const response = await fetch("http://localhost:3000/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const { token, user } = await response.json();
-      localStorage.setItem("token", token);
+       const {token,user} = await response.json();
+       localStorage.setItem("token", token);
       setUser(user);
     } catch (err) {
       console.log(err);

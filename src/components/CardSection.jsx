@@ -5,14 +5,14 @@ export default function CardSection() {
   useEffect(() => {
     fetch("http://localhost:3000/stocks")
       .then((res) => res.json())
-      .then((obj) => setStock(obj.data));
+      .then((data) => setStock(data));
   }, []);
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {stock.map((stock) => (
           <div
-            key={stock.id}
+            key={stock._id}
             className="bg-white rounded-xl shadow-md flex flex-col items-center p-4 border border-gray-200"
           >
             <img

@@ -10,11 +10,11 @@ export default function Navbar() {
   return (
     <div className="bg-gradient-to-r from-[rgb(173,216,230)] via-[rgb(135,206,250)] to-[rgb(70,130,180)] text-white h-20 flex items-center justify-between rounded-b-sm shadow-[0_0_25px_black] px-5">
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-2">
-          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 flex items-center justify-center">
+        <div className="flex items-center gap-2 flex-wrap min-w-0">
+          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 flex items-center justify-center min-w-[40px] min-h-[40px] w-8 h-8 sm:w-10 sm:h-10">
             {/* Modern minimalist cart icon in dark blue */}
             <svg
-              className="w-8 h-8"
+              className="w-7 h-7 sm:w-8 sm:h-8 max-w-full max-h-full"
               viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -33,17 +33,17 @@ export default function Navbar() {
               <circle cx="22" cy="26" r="2.2" fill="#183153" />
               <path
                 d="M8 12h16"
-                stroke="#183153"
+                stroke="#183153]"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />
             </svg>
           </div>
-          <div className="ml-2">
-            <h1 className="text-xl font-extrabold tracking-tight text-[#183153] leading-none">
+          <div className="ml-2 min-w-0 flex flex-col justify-center">
+            <h1 className="text-lg sm:text-xl font-extrabold tracking-tight text-[#183153] leading-none truncate max-w-[120px] sm:max-w-xs">
               Easy stocks
             </h1>
-            <p className="text-xs text-[#183153] opacity-70 font-medium">
+            <p className="text-[10px] sm:text-xs text-[#183153] opacity-70 font-medium truncate max-w-[120px] sm:max-w-xs">
               The easy way to trade stocks
             </p>
           </div>

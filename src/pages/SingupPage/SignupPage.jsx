@@ -33,7 +33,9 @@ const SignupPage = () => {
         <h2 className="text-3xl font-bold text-blue-700 mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit} className="w-full space-y-4">
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">Name</label>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Name
+            </label>
             <input
               id="name"
               type="text"
@@ -44,7 +46,9 @@ const SignupPage = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">Email</label>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Email
+            </label>
             <input
               id="email"
               type="email"
@@ -55,7 +59,9 @@ const SignupPage = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">Password</label>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Password
+            </label>
             <input
               id="password"
               type="password"

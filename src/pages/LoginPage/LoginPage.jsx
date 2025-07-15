@@ -35,7 +35,9 @@ const LoginPage = () => {
         <h2 className="text-3xl font-bold text-blue-700 mb-6">Login</h2>
         <form onSubmit={handleSubmit} className="w-full space-y-4">
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">Email</label>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Email
+            </label>
             <input
               id="email"
               type="email"
@@ -46,7 +48,9 @@ const LoginPage = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">Password</label>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Password
+            </label>
             <input
               id="password"
               type="password"

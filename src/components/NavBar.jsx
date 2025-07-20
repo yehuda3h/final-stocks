@@ -5,10 +5,15 @@ import AuthContext from "../context/AuthContext";
 import { filterLinks } from "../App";
 
 export default function Navbar() {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    localStorage.clear("token");
+    setUser(null);
+  };
 
   return (
-    <div className="bg-gradient-to-r from-[rgb(173,216,230)] via-[rgb(135,206,250)] to-[rgb(70,130,180)] text-white h-20 flex items-center justify-between rounded-b-sm shadow-[0_0_25px_black] px-5">
+    <nav className="bg-gradient-to-r from-[rgb(173,216,230)] via-[rgb(135,206,250)] to-[rgb(70,130,180)] text-white h-20 flex items-center justify-between rounded-b-sm shadow-[0_0_25px_black] px-5">
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2 flex-wrap min-w-0">
           <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 flex items-center justify-center min-w-[40px] min-h-[40px] w-8 h-8 sm:w-10 sm:h-10">
@@ -64,7 +69,16 @@ export default function Navbar() {
               </li>
             )
         )}
+
+        {user && (
+          <button
+            className="bg-[#7aafda] text-white px-6 py-2 rounded-xl font-semibold hover:bg-[#a4cff2] transition"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        )}
       </ul>
-    </div>
+    </nav>
   );
 }

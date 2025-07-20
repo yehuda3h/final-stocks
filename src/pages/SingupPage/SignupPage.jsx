@@ -7,7 +7,7 @@ const SignupPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    numberPhone: "",
+    number_phone: "",
     password: "",
   });
   const [error, setError] = useState("");
@@ -79,7 +79,7 @@ const SignupPage = () => {
               Number phone
             </label>
             <input
-              id="numberPhone"
+              id="number_phone"
               type="text"
               value={formData.number_phone}
               onChange={handleChange}

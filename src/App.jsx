@@ -106,18 +106,18 @@ export const links = [
     ),
     allowRoles: ["guest"],
   },
-  {
-    path: "/logout",
-    title: "Logout",
-    element: (
-      <div className="flex items-center justify-center h-screen">
-        <h1 className="text-2xl font-bold text-gray-800">
-          You have been logged out
-        </h1>
-      </div>
-    ),
-    allowRoles: ["user", "admin"],
-  },
+  // {
+  //   path: "/logout",
+  //   title: "Logout",
+  //   element: (
+  //     <div className="flex items-center justify-center h-screen">
+  //       <h1 className="text-2xl font-bold text-gray-800">
+  //         You have been logged out
+  //       </h1>
+  //     </div>
+  //   ),
+  //   allowRoles: ["user", "admin"],
+  // },
   {
     path: "/admin",
     title: "Admin",

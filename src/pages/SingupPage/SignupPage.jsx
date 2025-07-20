@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const SignupPage = () => {
+  const nav = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    numberPhone: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -15,15 +21,25 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
+      setIsLoading(true);
+      const { data } = await axios.post(
+        "http://localhost:3000/auth/signup",
+        formData
+      );
+      setError("");
+      nav("/login");
       console.log(data);
     } catch (err) {
+      console.error(err);
+      if (err === 409) {
+        setError("User already exists");
+        return;
+      }
+
+      setError("Something went wrong");
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -60,6 +76,19 @@ const SignupPage = () => {
           </div>
           <div>
             <label className="block text-gray-700 font-semibold mb-1">
+              Number phone
+            </label>
+            <input
+              id="numberPhone"
+              type="text"
+              value={formData.number_phone}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold mb-1">
               Password
             </label>
             <input
@@ -75,8 +104,9 @@ const SignupPage = () => {
             type="submit"
             className="w-full bg-blue-600 text-white font-bold py-2 rounded-lg shadow hover:bg-blue-700 transition"
           >
-            Sign Up
+            {isLoading ? " Loading..." : " Sign Up"}
           </button>
+          {error && <p className="text-red-500">{error}</p>}
         </form>
       </div>
     </div>

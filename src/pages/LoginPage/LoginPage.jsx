@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-
+import axios from "axios";
+import { useNavigate } from "react-router";
 const LoginPage = () => {
+  const nav = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -15,19 +19,27 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    
+
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-       const {token,user} = await response.json();
-       localStorage.setItem("token", token);
+      setIsLoading(true);
+      const { data } = await axios.post(
+        "http://localhost:3000/auth/login",
+        formData
+      );
+      setIsLoading(false);
+      const { token, user } = data;
+      localStorage.setItem("token", token);
       setUser(user);
+      nav("/");
     } catch (err) {
+      if (err.response && err.response.status === 401) {
+        setError("Invalid email or password");
+        return error;
+      }
+      setError("something went wrong");
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -66,8 +78,9 @@ const LoginPage = () => {
             type="submit"
             className="w-full bg-blue-600 text-white font-bold py-2 rounded-lg shadow hover:bg-blue-700 transition"
           >
-            Login
+            {isLoading ? " Loading..." : " Login"}
           </button>
+          {error && <p className="text-red-500">{error}</p>}
         </form>
       </div>
     </div>

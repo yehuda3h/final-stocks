@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 
-export default function CardSection() {
+export default function CardSection({ selectedCategory }) {
   const [stock, setStock] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    fetch("http://localhost:3000/stocks")
-      .then((res) => res.json())
-      .then((obj) => setStock(obj.data));
+    const fetchStocks = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/stocks");
+        setStock(res.data);
+      } catch (error) {
+        console.error("Error fetching stocks:", error);
+      }
+    };
+
+    fetchStocks();
   }, []);
+  const filteredStocks = stock.filter((item) => {
+    return item.category_code.includes(selectedCategory);
+  });
+
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {stock.map((stock) => (
+        {filteredStocks.map((stock) => (
           <div
-            key={stock.id}
+            key={stock._id}
             className="bg-white rounded-xl shadow-md flex flex-col items-center p-4 border border-gray-200"
           >
             <img
@@ -27,6 +42,15 @@ export default function CardSection() {
               {stock.description}
             </p>
             <p className="font-bold">sum prodact: {stock.stock}</p>
+            <button
+              onClick={() => {
+                console.log("asd");
+                navigate(`/stock/${stock._id}`);
+              }}
+              className="mt-2 bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              show stock
+            </button>
           </div>
         ))}
       </div>

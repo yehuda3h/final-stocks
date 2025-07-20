@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
+
 export default function FavoritesSection() {
-  const [favorite,setFavorite] = useState([]);
-  useEffect (() => {
+  const [favorite, setFavorite] = useState([]);
+  useEffect(() => {
     fetch("http://localhost:3000/stocks")
-    .then((res) => res.json())
-    .then((obj) => setFavorite(obj.data) )
-  },[]);
-  console.log(favorite);
-  
+      .then((res) => res.json())
+      .then((data) => setFavorite(data));
+  }, []);
+
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center text-blue-200  ">
-        
-      </h2>
+      <h2 className="text-3xl font-bold text-center text-blue-200  "></h2>
 
       <div className="flex gap-4 p-6 overflow-x-auto justify-center">
         {favorite.slice(0, 4).map((item) => (
           <div
-            key={item.id}
+            key={item._id}
+            
             className="bg-white rounded-lg shadow-md p-4 shadow-blue-300/100 transition-transform duration-200 hover:scale-105  w-72"
           >
             <img

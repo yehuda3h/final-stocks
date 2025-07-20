@@ -7,6 +7,9 @@ import SignupPage from "./pages/SingupPage";
 import LoginPage from "./pages/LoginPage";
 import AuthContext from "./context/AuthContext";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import PageProdact from "./pages/pageStock/PageProdact";
 
 export const links = [
   {
@@ -37,6 +40,7 @@ export const links = [
         />
       </svg>
     ),
+    allowRoles: ["user", "admin", "guest"],
   },
   {
     path: "/stocks",
@@ -56,6 +60,7 @@ export const links = [
         <rect x="3" y="14" width="7" height="7" rx="2" fill="#183153" />
       </svg>
     ),
+    allowRoles: ["user", "admin", "guest"],
   },
   {
     path: "/signup",
@@ -77,6 +82,7 @@ export const links = [
         />
       </svg>
     ),
+    allowRoles: ["guest"],
   },
   {
     path: "/login",
@@ -98,19 +104,73 @@ export const links = [
         />
       </svg>
     ),
+    allowRoles: ["guest"],
+  },
+  {
+    path: "/logout",
+    title: "Logout",
+    element: (
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-2xl font-bold text-gray-800">
+          You have been logged out
+        </h1>
+      </div>
+    ),
+    allowRoles: ["user", "admin"],
+  },
+  {
+    path: "/admin",
+    title: "Admin",
+    element: (
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-2xl font-bold text-gray-800">Admin Page</h1>
+      </div>
+    ),
+    allowRoles: ["admin"],
+  },
+  {
+    path: "/stock/:id",
+    element: <PageProdact />,
+    allowRoles: ["admin", "user", "guest"],
   },
 ];
 
+export const filterLinks = (links, role) => {
+  return links.filter(({ allowRoles }) => allowRoles.includes(role));
+};
+
 function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const validateToken = async () => {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:3000/auth/validate",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    validateToken();
+  }, []);
   return (
-    <div className="min-h-screen bg-home-background">
+    <div className="min-h-screen bg-home-background ">
       <AuthContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>
-          {links.map(({ path, element }) => (
-            <Route path={path} element={element} />
-          ))}
+          {filterLinks(links, user?.role || "guest").map(
+            ({ path, element }) => (
+              <Route path={path} element={element} />
+            )
+          )}
+          ;
         </Routes>
       </AuthContext.Provider>
     </div>

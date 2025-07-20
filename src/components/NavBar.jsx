@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router";
 import { links } from "../App";
+import AuthContext from "../context/AuthContext";
+import { filterLinks } from "../App";
 
 export default function Navbar() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="bg-gradient-to-r from-[rgb(173,216,230)] via-[rgb(135,206,250)] to-[rgb(70,130,180)] text-white h-20 flex items-center justify-between rounded-b-sm shadow-[0_0_25px_black] px-5">
       <div className="flex items-center gap-2">
@@ -45,17 +50,20 @@ export default function Navbar() {
         </div>
       </div>
       <ul className="flex  gap-8  ">
-        {links.map(({ path, title, icon }) => (
-          <li
-            className="hover:text-blue-600 flex items-center gap-1"
-            key={path}
-          >
-            <Link to={path} className="flex items-center gap-1">
-              {icon}
-              <span>{title}</span>
-            </Link>
-          </li>
-        ))}
+        {filterLinks(links, user?.role || "guest").map(
+          ({ path, title, icon }) =>
+            title && (
+              <li
+                className="hover:text-blue-600 flex items-center gap-1"
+                key={path}
+              >
+                <Link to={path} className="flex items-center gap-1">
+                  {icon}
+                  <span>{title}</span>
+                </Link>
+              </li>
+            )
+        )}
       </ul>
     </div>
   );

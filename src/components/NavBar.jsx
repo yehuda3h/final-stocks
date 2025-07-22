@@ -70,14 +70,7 @@ export default function Navbar() {
             )
         )}
 
-        {user && (
-          <button
-            className="bg-[#7aafda] text-white px-6 py-2 rounded-xl font-semibold hover:bg-[#a4cff2] transition"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        )}
+
       </ul>
     </nav>
   );

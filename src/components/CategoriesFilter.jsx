@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+ import { api } from "../utils/api";
  export default function CategoriesFilter({
   setSelectedCategory,
   selectedCategory,
@@ -7,7 +7,7 @@ import axios from "axios";
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const fatchCategories = async () => {
-      const res = await axios.get("http://localhost:3000/categories");
+      const res = await api.get("/categories");
       const data = res.data;
 
       setCategories(data.data);

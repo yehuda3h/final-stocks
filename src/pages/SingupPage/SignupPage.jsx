@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router";
+ import { useNavigate } from "react-router";
+import { api } from "../../utils/api";
 
 const SignupPage = () => {
   const nav = useNavigate();
@@ -22,8 +22,8 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const { data } = await axios.post(
-        "http://localhost:3000/auth/signup",
+      const { data } = await api.post(
+        "/auth/signup",
         formData
       );
       setError("");

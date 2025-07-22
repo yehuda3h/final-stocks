@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-import axios from "axios";
-import { useNavigate } from "react-router";
+ import { useNavigate } from "react-router";
+ import { api } from "../../utils/api";
 const LoginPage = () => {
   const nav = useNavigate();
   const { setUser } = useContext(AuthContext);
@@ -22,8 +22,8 @@ const LoginPage = () => {
 
     try {
       setIsLoading(true);
-      const { data } = await axios.post(
-        "http://localhost:3000/auth/login",
+      const { data } = await api.post(
+        "/auth/login",
         formData
       );
       setIsLoading(false);

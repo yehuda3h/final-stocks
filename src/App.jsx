@@ -8,8 +8,9 @@ import LoginPage from "./pages/LoginPage";
 import AuthContext from "./context/AuthContext";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
-import PageProdact from "./pages/pageStock/PageProdact";
+ import PageProdact from "./pages/pageStock/PageProdact";
+import { api } from "./utils/api";
+import AdminPage from "./pages/adminPage/AdminPage";
 
 export const links = [
   {
@@ -143,11 +144,7 @@ export const links = [
   {
     path: "/admin",
     title: "Admin",
-    element: (
-      <div className="flex items-center justify-center h-screen">
-        <h1 className="text-2xl font-bold text-gray-800">Admin Page</h1>
-      </div>
-    ),
+    element: <AdminPage />,
     allowRoles: ["admin"],
   },
   {
@@ -167,14 +164,7 @@ function App() {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:3000/auth/validate",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const { data } = await api.get("auth/validate");
         setUser(data);
       } catch (error) {
         console.log(error);

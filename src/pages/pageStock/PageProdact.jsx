@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import getErrorMessage from "../../utils/erorMassages";
+ import getErrorMessage from "../../utils/erorMassages";
 import CardAdvertiser from "./CardAdvertiser";
+import { api } from "../../utils/api";
 
 export default function PageProdact() {
   const { id } = useParams();
@@ -14,7 +14,7 @@ export default function PageProdact() {
     const fetchStock = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`http://localhost:3000/stocks/${id}`);
+        const { data } = await api.get(`/stocks/${id}`);
         setError("");
         setStock(data);
       } catch (error) {

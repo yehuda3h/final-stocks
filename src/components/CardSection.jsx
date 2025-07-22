@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
-
+import { api } from "../utils/api";
+ 
 export default function CardSection({ selectedCategory }) {
   const [stock, setStock] = useState([]);
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ export default function CardSection({ selectedCategory }) {
   useEffect(() => {
     const fetchStocks = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/stocks");
+        const res = await api.get("/stocks");
         setStock(res.data);
       } catch (error) {
         console.error("Error fetching stocks:", error);

@@ -1,10 +1,11 @@
 import React from "react";
  import { useState } from "react";
 export default function AddCategoriesForm() {
+   const [categoryName, setCategoryName] = useState("");
+    const [categoryCode, setCategoryCode] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    const [categoryName, setCategoryName] = useState("");
-    const [categoryCode, setCategoryCode] = useState("");
+   
   };
   return (
     <section>

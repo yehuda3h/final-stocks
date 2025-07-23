@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import HomePage from "./pages/HomePage/components/HomePage";
+import HomePage from "./../src/pages/HomePage/HomePage";
 import StocksPage from "./components/StocksPage";
 import Navbar from "./components/NavBar";
 import "./App.css";
@@ -8,7 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import AuthContext from "./context/AuthContext";
 import { useState } from "react";
 import { useEffect } from "react";
- import PageProdact from "./pages/pageStock/PageProdact";
+import PageProdact from "./pages/pageStock/PageProdact";
 import { api } from "./utils/api";
 import AdminPage from "./pages/adminPage/AdminPage";
 

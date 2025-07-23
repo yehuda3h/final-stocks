@@ -1,15 +1,17 @@
 import { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { links } from "../App";
 import AuthContext from "../context/AuthContext";
 import { filterLinks } from "../App";
 
 export default function Navbar() {
   const { user, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear("token");
     setUser(null);
+    navigate("/");
   };
 
   return (

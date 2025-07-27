@@ -35,21 +35,20 @@ export default function CardSection({ selectedCategory }) {
               alt="image"
               className="w-full h-40 object-cover rounded-3xl mb-2 shadow-2xl "
             />
-            <h4 className="font-bold">name prodact: {stock.product_name}</h4>
-            <h6 className="font-bold"> {stock.category}</h6>
-            <p className="text-green-700 font-bold">price: {stock.price}</p>
+            <h4 className="font-bold">Product Name: {stock.product_name}</h4>
+            <h6 className="font-bold">Category: {stock.category}</h6>
+            <p className="text-green-700 font-bold">Price: ${stock.price}</p>
             <p className="mt-2 mb-1 text-lg font-semibold text-gray-800 text-center">
-              {stock.description}
+              Description: {stock.description}
             </p>
-            <p className="font-bold">sum prodact: {stock.stock}</p>
+            <p className="font-bold">Stock Quantity: {stock.stock}</p>
             <button
               onClick={() => {
-                console.log("asd");
                 navigate(`/stock/${stock._id}`);
               }}
               className="mt-2 bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             >
-              show stock
+              View Product
             </button>
           </div>
         ))}

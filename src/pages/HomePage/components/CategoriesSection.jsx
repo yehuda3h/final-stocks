@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
+import { api } from "../../../utils/api";
 
 export default function CategoriesSection() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch(" http://127.0.0.1:3000/categories")
-      .then((res) => res.json())
-      .then(({ data }) => {
-        setCategories(data);
-      });
+    const fetchCategories = async () => {
+      try {
+        const { data } = await api.get("/categories");
+        setCategories(data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
   return (

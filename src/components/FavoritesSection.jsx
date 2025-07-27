@@ -1,16 +1,24 @@
 import  { useEffect, useState } from "react";
+import { api } from "../utils/api";
 
 export default function FavoritesSection() {
   const [favorite, setFavorite] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/stocks")
-      .then((res) => res.json())
-      .then((data) => setFavorite(data));
+    const fetchFavorites = async () => {
+      try {
+        const response = await api.get("/stocks");
+        setFavorite(response.data);
+      } catch (error) {
+        console.error("Error fetching favorites:", error);
+      }
+    };
+
+    fetchFavorites();
   }, []);
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center text-blue-200  "></h2>
+      <h2 className="text-3xl font-bold text-center text-blue-200  ">Favorites</h2>
 
       <div className="flex gap-4 p-6 overflow-x-auto justify-center">
         {favorite.slice(0, 4).map((item) => (

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
- import { useNavigate } from "react-router";
- import { api } from "../../utils/api";
+import { useNavigate } from "react-router";
+import { api } from "../../utils/api";
 const LoginPage = () => {
   const nav = useNavigate();
   const { setUser } = useContext(AuthContext);
@@ -22,10 +22,7 @@ const LoginPage = () => {
 
     try {
       setIsLoading(true);
-      const { data } = await api.post(
-        "/auth/login",
-        formData
-      );
+      const { data } = await api.post("/auth/login", formData);
       setIsLoading(false);
       const { token, user } = data;
       localStorage.setItem("token", token);
@@ -38,6 +35,7 @@ const LoginPage = () => {
       }
       setError("something went wrong");
       console.log(err);
+      console.log(err.response.data);
     } finally {
       setIsLoading(false);
     }

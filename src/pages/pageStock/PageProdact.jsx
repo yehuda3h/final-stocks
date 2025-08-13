@@ -26,6 +26,9 @@ export default function PageProdact() {
 
     fetchStock();
   }, [id]);
+
+  console.log(error);
+
   return (
     <div className="flex flex-row justify-end px-12 pt-12">
       {stock ? (

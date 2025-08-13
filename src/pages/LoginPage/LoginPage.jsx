@@ -1,16 +1,15 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router";
-import { api } from "../../utils/api";
-const LoginPage = () => {
+import useAxios from "../../hooks/useAxios";
+ const LoginPage = () => {
   const nav = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const { sendRequest, error, loading, status } = useAxios();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -19,26 +18,20 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      setIsLoading(true);
-      const { data } = await api.post("/auth/login", formData);
-      setIsLoading(false);
-      const { token, user } = data;
+      const { token, user } = await sendRequest({
+        url: "/auth/login",
+        method: "POST",
+        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       localStorage.setItem("token", token);
       setUser(user);
       nav("/");
-    } catch (err) {
-      if (err.response && err.response.status === 401) {
-        setError("Invalid email or password");
-        return error;
-      }
-      setError("something went wrong");
-      console.log(err);
-      console.log(err.response.data);
-    } finally {
-      setIsLoading(false);
-    }
+    } catch {}
   };
 
   return (
@@ -76,9 +69,9 @@ const LoginPage = () => {
             type="submit"
             className="w-full bg-blue-600 text-white font-bold py-2 rounded-lg shadow hover:bg-blue-700 transition"
           >
-            {isLoading ? " Loading..." : " Login"}
+            {loading ? " Loading..." : " Login"}
           </button>
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <p className="text-red-500">{error} </p>}
         </form>
       </div>
     </div>

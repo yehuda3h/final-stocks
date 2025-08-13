@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import PageProdact from "./pages/pageStock/PageProdact";
 import { api } from "./utils/api";
 import AdminPage from "./pages/adminPage/AdminPage";
+import Page404 from "./components/Page404";
 
 export const links = [
   {
@@ -129,6 +130,13 @@ export const links = [
     path: "/stock/:id",
     element: <PageProdact />,
     allowRoles: ["admin", "user", "guest"],
+  },
+  {
+    path:"*",
+    element:<Page404/>,
+     allowRoles: ["admin", "user", "guest"],
+
+    
   },
 ];
 

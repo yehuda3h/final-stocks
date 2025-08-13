@@ -32,7 +32,7 @@ export default function HeroSection() {
 
     timerRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 4000);
 
     return () => {
       if (timerRef.current) {

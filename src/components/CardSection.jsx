@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { api } from "../utils/api";
- 
+
 export default function CardSection({ selectedCategory }) {
   const [stock, setStock] = useState([]);
   const navigate = useNavigate();

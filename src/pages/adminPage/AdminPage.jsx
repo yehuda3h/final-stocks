@@ -3,8 +3,8 @@ import CategoriesList from "./components/categories/CategoriesList";
 import { useEffect, useState } from "react";
 import { api } from "../../utils/api";
 import UsersList from "./components/users/UsersList";
-import StockList from "./components/stocks/StockList";
-
+import StockList from "../adminPage/components/stocks/StockList";
+ 
 export default function AdminPage() {
   const [categories, setCategories] = useState([]);
   const [currentSection, setCurrentSection] = useState("categories");
@@ -110,7 +110,6 @@ export default function AdminPage() {
               stroke="currentColor"
               strokeWidth={2}
             >
-              {/* שקית מקרטון עם ידית עגולה קטנה ומרובע נמוך */}
               <rect
                 x="5"
                 y="9"

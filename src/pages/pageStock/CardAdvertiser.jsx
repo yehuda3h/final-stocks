@@ -1,13 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
-
 function CardAdvertiser({ user }) {
-  const navigate = useNavigate();
-
   if (!user) {
     return (
       <div className="mt-8 bg-white rounded-xl shadow-lg p-6">
-        <h3 className="text-xl font-bold mb-4 text-gray-800">About the Seller</h3>
+        <h3 className="text-xl font-bold mb-4 text-gray-800">
+          About the Seller
+        </h3>
         <p className="text-gray-600">No seller information available</p>
       </div>
     );
@@ -30,11 +27,11 @@ function CardAdvertiser({ user }) {
             />
           </svg>
           <div>
-            <p className="font-semibold text-gray-800">{user.name || 'N/A'}</p>
+            <p className="font-semibold text-gray-800">{user.name || "N/A"}</p>
             <p className="text-gray-600">Seller</p>
           </div>
         </div>
-        
+
         {user.number_phone && (
           <div className="flex items-center gap-4">
             <svg
@@ -56,7 +53,7 @@ function CardAdvertiser({ user }) {
             </div>
           </div>
         )}
-        
+
         {user.email && (
           <div className="flex items-center gap-4">
             <svg

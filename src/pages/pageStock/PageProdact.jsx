@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import getErrorMessage from "../../utils/erorMassages";
-import CardAdvertiser from "./CardAdvertiser";
 import { api } from "../../utils/api";
+import CardAdvertiser from "./CardAdvertiser";
 
 export default function PageProdact() {
   const { id } = useParams();
@@ -26,8 +26,6 @@ export default function PageProdact() {
 
     fetchStock();
   }, [id]);
-
-  console.log(error);
 
   return (
     <div className="flex flex-row justify-end px-12 pt-12">
@@ -66,5 +64,3 @@ export default function PageProdact() {
     </div>
   );
 }
-
-// קומפוננטת Seller הוסרה כי היא הוחלפה ב-CardAdvertiser

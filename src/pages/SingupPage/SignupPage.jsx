@@ -1,5 +1,5 @@
 import React, { useState } from "react";
- import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { api } from "../../utils/api";
 
 const SignupPage = () => {
@@ -22,13 +22,9 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const { data } = await api.post(
-        "/auth/signup",
-        formData
-      );
+      const { data } = await api.post("/auth/signup", formData);
       setError("");
       nav("/login");
-      console.log(data);
     } catch (err) {
       console.error(err);
       if (err === 409) {
@@ -37,7 +33,6 @@ const SignupPage = () => {
       }
 
       setError("Something went wrong");
-      console.log(err);
     } finally {
       setIsLoading(false);
     }

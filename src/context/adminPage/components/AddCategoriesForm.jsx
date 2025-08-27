@@ -23,7 +23,6 @@ export default function AddCategoriesForm() {
       console.error("Error adding category:", err);
     }
   };
-  console.log(category);
 
   return (
     <section>

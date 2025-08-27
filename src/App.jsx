@@ -12,6 +12,9 @@ import PageProdact from "./pages/pageStock/PageProdact";
 import { api } from "./utils/api";
 import AdminPage from "./pages/adminPage/AdminPage";
 import Page404 from "./components/Page404";
+import UserPage from "./pages/userPage/UserPage";
+import Profile from "./icons/Profile";
+import Footer from "./components/Footer";
 
 export const links = [
   {
@@ -108,18 +111,7 @@ export const links = [
     ),
     allowRoles: ["guest"],
   },
-  // {
-  //   path: "/logout",
-  //   title: "Logout",
-  //   element: (
-  //     <div className="flex items-center justify-center h-screen">
-  //       <h1 className="text-2xl font-bold text-gray-800">
-  //         You have been logged out
-  //       </h1>
-  //     </div>
-  //   ),
-  //   allowRoles: ["user", "admin"],
-  // },
+
   {
     path: "/admin",
     title: "Admin",
@@ -127,16 +119,20 @@ export const links = [
     allowRoles: ["admin"],
   },
   {
+    path: "/user",
+    title: <Profile />,
+    element: <UserPage />,
+    allowRoles: ["admin", "user"],
+  },
+  {
     path: "/stock/:id",
     element: <PageProdact />,
     allowRoles: ["admin", "user", "guest"],
   },
   {
-    path:"*",
-    element:<Page404/>,
-     allowRoles: ["admin", "user", "guest"],
-
-    
+    path: "*",
+    element: <Page404 />,
+    allowRoles: ["admin", "user", "guest"],
   },
 ];
 
@@ -159,9 +155,9 @@ function App() {
     validateToken();
   }, []);
   return (
-    <div className="min-h-screen bg-home-background ">
-      <AuthContext.Provider value={{ user, setUser }}>
-        <Navbar />
+    <AuthContext.Provider value={{ user, setUser }}>
+      <Navbar />
+      <div className="min-h-screen bg-home-background ">
         <Routes>
           {filterLinks(links, user?.role || "guest").map(
             ({ path, element }) => (
@@ -170,8 +166,9 @@ function App() {
           )}
           ;
         </Routes>
-      </AuthContext.Provider>
-    </div>
+      </div>
+      <Footer />
+    </AuthContext.Provider>
   );
 }
 

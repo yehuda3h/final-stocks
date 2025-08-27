@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
  import { api } from "../utils/api";
+import CategorySelectList from "./CategorySelectList";
  export default function CategoriesFilter({
   setSelectedCategory,
   selectedCategory,
@@ -25,22 +26,11 @@ import React, { useEffect, useState } from "react";
         >
           Category
         </label>
-        <select
-          id="category"
-          name="category"
-          className="w-full rounded-lg border border-[#22333B] px-3 py-2 text-[#22333B] bg-white focus:ring-2 focus:ring-[#22333B] transition"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="">All</option>
-          {categories.map((c) => {
-            return (
-              <option key={c.category_code} value={c.category_code}>
-                {c.category}
-              </option>
-            );
-          })}
-        </select>
+        <CategorySelectList
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </div>
       <button
         className="bg-blue-400 text-white px-6 py-2 rounded-xl font-semibold hover:bg-blue-700 transition"

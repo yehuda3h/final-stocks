@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { api } from "../../../utils/api";
-
+import { useNavigate } from "react-router";
 export default function CategoriesSection() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -32,9 +33,13 @@ export default function CategoriesSection() {
 }
 
 function CatItem({ category }) {
+  const navigate = useNavigate();
   return (
-    <div className="text-center w-24 h-40 rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-120 hover:-translate-y-3 hover:rotate-3 hover:shadow-2xl delay-0">
-      <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg border-2 border-blue-300">
+    <div
+      onClick={() => navigate(`/stocks?category=${category.category_code}`)}
+      className="text-center w-24 h-40 rounded-xl shadow-md transition-all duration-300 ease-in-out hover:scale-120 hover:-translate-y-3 hover:rotate-3 hover:shadow-2xl active:scale-110 active:shadow-2xl"
+    >
+      <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg border-2 border-blue-300 ">
         <img
           src={category.image}
           alt={category.category}

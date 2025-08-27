@@ -1,8 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
+import { useNavigate } from "react-router";
 
 export default function FavoritesSection() {
+  const navigate = useNavigate();
   const [favorite, setFavorite] = useState([]);
 
   useEffect(() => {
@@ -22,9 +24,13 @@ export default function FavoritesSection() {
     <div className="w-full px-8">
       <h2 className="text-2xl font-bold text-center text-blue-500 mb-4">Favorites</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div
+      
+      className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {favorite.slice(0, 3).map((item) => (
-          <div key={item._id} className="bg-white rounded-xl shadow-lg p-4 border border-gray-100 transition-transform duration-200 hover:shadow-xl hover:border-blue-300">
+          <div key={item._id} className="bg-white rounded-xl shadow-lg p-4 border border-gray-100 transition-transform duration-200 hover:shadow-xl hover:border-blue-300"
+          onClick={() =>navigate(`/stock/${item._id}`)}
+          >
             <div className="space-y-4">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img

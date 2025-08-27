@@ -1,15 +1,15 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import getErrorMessage from "../../utils/erorMassages";
-import CardAdvertiser from "./CardAdvertiser";
-import { api } from "../../utils/api";
+ import { api } from "../../utils/api";
+import ProdactCarusel from "./components/ProdactCarusel";
 
 export default function PageProdact() {
   const { id } = useParams();
   const [stock, setStock] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+ 
   useEffect(() => {
     const fetchStock = async () => {
       try {
@@ -27,8 +27,7 @@ export default function PageProdact() {
     fetchStock();
   }, [id]);
 
-  console.log(error);
-
+ 
   return (
     <div className="flex flex-row justify-end px-12 pt-12">
       {stock ? (
@@ -63,8 +62,7 @@ export default function PageProdact() {
       ) : (
         <p className="text-red-600">{error}</p>
       )}
-      <CardAdvertiser user={stock?.user_id} />
-    </div>
+     </div>
   );
 }
 
@@ -129,6 +127,8 @@ function Seller({ user }) {
           </div>
         </div>
       </div>
+     
     </div>
+        
   );
 }

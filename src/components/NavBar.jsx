@@ -19,8 +19,7 @@ export default function Navbar() {
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2 flex-wrap min-w-0">
           <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 flex items-center justify-center min-w-[40px] min-h-[40px] w-8 h-8 sm:w-10 sm:h-10">
-            {/* Modern minimalist cart icon in dark blue */}
-            <svg
+             <svg
               className="w-7 h-7 sm:w-8 sm:h-8 max-w-full max-h-full"
               viewBox="0 0 32 32"
               fill="none"

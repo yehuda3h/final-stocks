@@ -54,7 +54,7 @@ export default function PageProdact() {
                 </span>
               </div>
             </div>
-            {stock.user_id && <Seller user={stock.user_id} />}
+            {stock.user_id && <CardAdvertiser user={stock.user_id} />}
           </div>
         </div>
       ) : isLoading ? (
